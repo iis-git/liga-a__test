@@ -1,0 +1,74 @@
+.header {
+  display: block;
+  background-color: $color-default-white;
+  height: 74px;
+}
+
+.header__wrapper {
+  display: flex;
+  padding: 25px 35px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  height: 24px;
+}
+
+.logo-picture {
+  transform: translate(0, 0);
+}
+
+/**
+Стили прелоадера
+ */
+.header--loaderShown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  background-color: $color-default-white;
+
+  &::after {
+    content: 'Кликните на экран';
+    font-size: 24px;
+    line-height: 22px;
+    color: $color-default-black;
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    opacity: 0;
+
+    @include viewport--lg {
+      content: 'Нажмите Enter';
+    }
+  }
+
+  .header__logo {
+    pointer-events: none;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .logo-picture {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 300px;
+
+
+    @include viewport--lg {
+      width: 800px;
+      height: 600px;
+    }
+  }
+}

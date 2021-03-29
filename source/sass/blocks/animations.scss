@@ -1,0 +1,244 @@
+@keyframes glow {
+  0% {
+    opacity: 0.2;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.animatedFromTop {
+  opacity: 0;
+  transform: translate(0, -100px);
+  animation: revealFromTop $main-animation-transition-settings;
+}
+
+
+.animatedFromLeft {
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: revealFromLeft $main-animation-transition-settings;
+}
+
+.animatedFromRight {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: revealFromRight $main-animation-transition-settings;
+}
+
+.animatedFromBottom {
+  opacity: 0;
+  transform: translate(-50%, 50%);
+  animation: revealFromBottom $main-animation-transition-settings;
+}
+
+@keyframes revealFromTop {
+  from {
+    opacity: 0;
+    transform: translate(0, -100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes revealFromBottom {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0%);
+  }
+}
+
+@keyframes revealFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    filter: blur(0px);
+  }
+}
+
+@keyframes revealFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+    filter: blur(0px);
+  }
+}
+
+.animatedLogoLeft {
+  opacity: 0;
+  transform: translateX(50px) scale(0);
+  filter: blur(30px);
+  transform-origin: top center;
+  animation: logoRevealLeft 1.5s .3s ease-out forwards;
+}
+
+.animatedLogoRight {
+  opacity: 0;
+  transform: translateX(-50px) scale(0);
+  filter: blur(30px);
+  transform-origin: top center;
+  animation: logoRevealRight 1.5s .6s ease forwards;
+}
+
+@keyframes logoRevealLeft {
+  0% {
+    transform: translateX(45px) scale(0);
+    filter: blur(10px);
+  }
+
+  50% {
+    transform: translateX(45px) scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateX(45px) scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes logoRevealRight {
+  0% {
+    transform: translateX(-45px) scale(0);
+    filter: blur(30px);
+  }
+
+  10% {
+    transform: translateX(-45px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes revealSvgPath {
+  from {
+    opacity: 0;
+    transform: translate(-10px, 30px);
+  }
+  to {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}
+
+.animateDinoPicture {
+  animation: revealPath .3s 3s ease;
+}
+
+.dino-picture__flag {
+  transition: transform $main-picture-transition-settings;
+  transform: translate(-10px, 30px);
+}
+
+.dino-picture__roar-1 {
+  transition: transform $main-picture-transition-settings,
+  opacity .1s 1s ease-in;
+  transform: translate(-10px, 0);
+  opacity: 0;
+}
+
+.dino-picture__roar-2 {
+  transition: transform $main-picture-transition-settings,
+  opacity .1s 1s ease-in;
+  transform: translate(-10px, 0);
+  opacity: 0;
+}
+
+.dino-picture__lightning-violet {
+  transition: transform $main-picture-ligntning1-transition-settings,
+  opacity .3s 2s ease-in;
+  transform: translate(90px, 150px);
+  opacity: 0;
+}
+
+.dino-picture__lightning-violet-small {
+  transition: transform $main-picture-ligntning2-transition-settings,
+  opacity .3s 1.8s ease-in;
+  transform: translate(-80px, 60px);
+  opacity: 0;
+}
+
+.dino-picture__lightning-red {
+  transition: transform $main-picture-ligntning2-transition-settings,
+  opacity .3s 1.8s ease-in;
+  transform: translate(40px, 150px);
+  opacity: 0;
+}
+
+.dino-picture__lightning-blue {
+  transition: transform $main-picture-ligntning1-transition-settings,
+  opacity .5s 2s ease-in;
+  transform: translate(-100px, 200px);
+  opacity: 0;
+}
+
+.revealPath {
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+
+.afterAnim {
+  position: absolute;
+  left: 131px;
+  top: 36px;
+  width: 192px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  transition: top 1s ease-in-out,
+  left 1s ease-in-out,
+  width 1s ease-in-out,
+  height 1s ease-in-out;
+}
+
+
+/**
+Анимация мерцания подсказки
+ */
+.header--activeTooltip {
+  &::after {
+    animation: glow 2s 3s ease-in infinite;
+  }
+}
