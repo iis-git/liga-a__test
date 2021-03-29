@@ -24,7 +24,7 @@ const html = () => {
         test: 'text'
       }
     }))
-    // .pipe(gulp.dest('build'))
+    .pipe(gulp.dest('build'))
     .pipe(gulp.dest('./'));
 };
 
@@ -36,12 +36,13 @@ const css = () => {
       .pipe(postcss([autoprefixer({
         grid: true,
       })]))
-      .pipe(gulp.dest('build/css'))
       .pipe(gulp.dest('css/'))
+      .pipe(gulp.dest('build/css'))
       .pipe(csso())
       .pipe(rename('style.min.css'))
       .pipe(sourcemap.write('.'))
       .pipe(gulp.dest('css/'))
+      .pipe(gulp.dest('build/css'))
       .pipe(server.stream());
 };
 
@@ -49,6 +50,7 @@ const js = () => {
   return gulp.src(['source/js/main.js'])
       .pipe(webpackStream(webpackConfig))
       .pipe(gulp.dest('js/'))
+      .pipe(gulp.dest('build/js'))
 };
 
 const svgo = () => {
@@ -117,6 +119,7 @@ const copy = () => {
   ], {
     base: 'source',
   })
+      .pipe(gulp.dest('build'))
       .pipe(gulp.dest('./'));
 };
 
@@ -144,6 +147,7 @@ const optimizeImages = () => {
         imagemin.optipng({optimizationLevel: 3}),
         imagemin.mozjpeg({quality: 75, progressive: true}),
       ]))
+      .pipe(gulp.dest('img/'))
       .pipe(gulp.dest('build/img'));
 };
 
