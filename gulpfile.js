@@ -117,7 +117,7 @@ const copy = () => {
   ], {
     base: 'source',
   })
-      .pipe(gulp.dest('build'));
+      .pipe(gulp.dest('./'));
 };
 
 const clean = () => {
