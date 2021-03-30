@@ -770,12 +770,14 @@ button,
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
-  max-height: 768px; }
+  max-height: 768px;
+  cursor: pointer; }
   @media (min-width: 1024px) {
     .hero {
       -webkit-box-align: start;
           -ms-flex-align: start;
-              align-items: flex-start; } }
+              align-items: flex-start;
+      cursor: default; } }
 
 .hero__left {
   min-width: 570px;

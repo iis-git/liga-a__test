@@ -4,9 +4,11 @@
   align-items: center;
   overflow: hidden;
   max-height: 768px;
+  cursor: pointer;
 
   @include viewport--lg {
     align-items: flex-start;
+    cursor: default;
   }
 }
 

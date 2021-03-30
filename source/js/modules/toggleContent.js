@@ -2,7 +2,7 @@
  * Функция для отображения скрытой части на моб версии
  */
 
-import {executeIfCondition, isMobile} from '../utils/checkViewportSize';
+import {executeIfCondition, isMobile, isDesktop} from '../utils/checkViewportSize';
 import {animateHeroImage} from './animations';
 
 const toggleContent = () => {
@@ -14,7 +14,7 @@ const toggleContent = () => {
    * Добавляем обработчик для включения/выключения переключения в зависимости от разрешения
    * и обработчик, чтобы убрать клик с хедера
    */
-  window.addEventListener('resize', () => executeIfCondition(isMobile(), setClickHandler, removeClickHandler));
+  window.addEventListener('resize', () => executeIfCondition(!isDesktop(), setClickHandler, removeClickHandler));
   mainHeader.addEventListener('click', (evt) => evt.stopPropagation());
 
 
@@ -40,7 +40,7 @@ const toggleContent = () => {
   /**
    * Добавляем обработчик на мобильной версии
    */
-  executeIfCondition(isMobile(), setClickHandler, () => {});
+  executeIfCondition(!isDesktop(), setClickHandler, () => {});
 };
 
 export {toggleContent};
